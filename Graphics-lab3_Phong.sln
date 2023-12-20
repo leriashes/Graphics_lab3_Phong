@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Graphics-lab3_Phong", "Graphics-lab3_Phong.pyproj", "{6B79EDC9-ACCF-422A-9C67-5A948CB25B9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B79EDC9-ACCF-422A-9C67-5A948CB25B9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B79EDC9-ACCF-422A-9C67-5A948CB25B9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD5D9794-BE36-4A5D-88E9-4C19DE889BE9}
+	EndGlobalSection
+EndGlobal

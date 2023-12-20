@@ -1,0 +1,52 @@
+#version 410 core
+
+struct PointLight
+{
+    vec3 position;
+    vec3 color;
+    float strength;
+};
+
+in vec3 fragmentPosition;
+in vec3 fragmentNormal;
+
+uniform PointLight Lights[8];
+uniform vec3 cameraPosition;
+uniform vec3 objcolor;
+
+out vec4 color;
+
+vec3 calculatePointLight(PointLight light, vec3 fragmentPosition, vec3 fragmentNormal);
+
+void main()
+{
+    //окружающее освещение - ambient
+    vec3 temp = 0.2 * objcolor;
+
+    for (int i = 0; i < 8; i++)
+    {
+        temp += calculatePointLight(Lights[i], fragmentPosition, fragmentNormal);
+    }
+
+    color = vec4(temp, 1.0);
+}
+
+vec3 calculatePointLight(PointLight light, vec3 fragmentPosition, vec3 fragmentNormal)
+{
+    vec3 result = vec3(0.0);
+
+    //геометрия
+    vec3 fragLight = light.position - fragmentPosition;
+    float distance = length(fragLight);
+    fragLight = normalize(fragLight);
+    vec3 fragCamera = normalize(cameraPosition - fragmentPosition);
+
+    //рассеяное освещение - diffuse
+    result += light.color * light.strength * max(0.0, dot(fragmentNormal, fragLight)) / (distance * distance) * objcolor;
+
+    //блик - specular
+    vec3 reflectDir = reflect(-fragLight, fragmentNormal);
+    result += light.color * light.strength * pow(max(0.0, dot(fragCamera, reflectDir)), 8) / (distance * distance);
+
+    return result;
+}
